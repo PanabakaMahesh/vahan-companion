@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 
+import BackButton from "../../components/BackButton";
 import ChatInput from "../../components/ChatInput";
 import DocumentCard from "../../components/DocumentCard";
 import Header from "../../components/Header";
@@ -365,15 +366,9 @@ export default function JourneyPage() {
 
       <main className="container py-8 sm:py-12">
         <div className="mb-8">
-          <button
-                type="button"
-                onClick={handleBack}
-                className="inline-flex items-center gap-2 text-sm font-semibold text-[#667085] transition hover:text-[#155EEF]"
-            >
-            ← Back
-        </button>
+          <BackButton onClick={handleBack} />
 
-          <div className="mt-6">
+          <div className="mt-5 max-w-3xl">
             <p className="text-xs font-extrabold uppercase tracking-widest text-[#155EEF]">
               Used vehicle ownership
             </p>
