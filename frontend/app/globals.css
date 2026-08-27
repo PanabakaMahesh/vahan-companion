@@ -1,26 +1,239 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary: #155eef;
+  --primary-dark: #0b4acb;
+  --primary-light: #eaf1ff;
+
+  --text: #101828;
+  --text-secondary: #475467;
+  --text-muted: #667085;
+
+  --background: #f8fafc;
+  --surface: #ffffff;
+  --border: #e4e7ec;
+
+  --success: #12b76a;
+  --success-light: #ecfdf3;
+
+  --warning: #f79009;
+  --warning-light: #fffaeb;
+
+  --danger: #d92d20;
+  --danger-light: #fef3f2;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
+  margin: 0;
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ------------------------------
+   Accessibility
+------------------------------ */
+
+:focus-visible {
+  outline: 3px solid rgba(21, 94, 239, 0.35);
+  outline-offset: 3px;
+}
+
+/* ------------------------------
+   Selection
+------------------------------ */
+
+::selection {
+  background: #dbe7ff;
+  color: var(--text);
+}
+
+/* ------------------------------
+   Scrollbar
+------------------------------ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+
+/* ------------------------------
+   Shared layout helpers
+------------------------------ */
+
+.page-shell {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at 85% 10%,
+      rgba(21, 94, 239, 0.07),
+      transparent 28%
+    ),
+    var(--background);
+}
+
+.container {
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+/* ------------------------------
+   Card
+------------------------------ */
+
+.service-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.service-card:hover {
+  transform: translateY(-2px);
+  border-color: #c7d7fe;
+  box-shadow: 0 12px 32px rgba(16, 24, 40, 0.08);
+}
+
+/* ------------------------------
+   Buttons
+------------------------------ */
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--primary);
+  color: white;
+  font-weight: 700;
+  transition:
+    background 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.primary-button:hover {
+  background: var(--primary-dark);
+  box-shadow: 0 8px 20px rgba(21, 94, 239, 0.22);
+}
+
+.primary-button:active {
+  transform: translateY(1px);
+}
+
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: white;
+  color: var(--text);
+  font-weight: 700;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease;
+}
+
+.secondary-button:hover {
+  background: #f9fafb;
+  border-color: #98a2b3;
+}
+
+/* ------------------------------
+   Status styles
+------------------------------ */
+
+.status-success {
+  color: #067647;
+  background: var(--success-light);
+}
+
+.status-warning {
+  color: #b54708;
+  background: var(--warning-light);
+}
+
+.status-danger {
+  color: #b42318;
+  background: var(--danger-light);
+}
+
+/* ------------------------------
+   Mobile
+------------------------------ */
+
+@media (max-width: 640px) {
+  .container {
+    width: min(100% - 28px, 1120px);
+  }
+
+  .service-card {
+    border-radius: 16px;
+  }
+
+  .primary-button,
+  .secondary-button {
+    width: 100%;
+  }
+}
+
+/* ------------------------------
+   Reduced motion
+------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
 }
