@@ -1,9 +1,5 @@
 export type VehicleType = "TWO_WHEELER" | "FOUR_WHEELER";
 
-export type UserRole = "BUYER" | "SELLER";
-
-export type Intent = "OWNERSHIP_TRANSFER";
-
 export type JourneyStep =
   | "SELLER_INITIATION"
   | "BUYER_CONFIRMATION"
@@ -13,36 +9,12 @@ export type JourneyStep =
   | "COMPLETED";
 
 export type ApplicationStatus =
+  | "SUBMITTED"
   | "UNDER_VERIFICATION"
   | "DOCUMENT_REQUIRED"
-  | "DELAYED"
+  | "PAYMENT_PENDING"
+  | "APPROVED"
   | "COMPLETED";
-
-export type ApplicationAction =
-  | "WAIT"
-  | "UPLOAD_DOCUMENT"
-  | "START_RESOLUTION"
-  | "NO_ACTION";
-
-export interface IntentResponse {
-  intent: Intent;
-  role: UserRole;
-  vehicle_type: VehicleType;
-}
-
-export interface JourneyResponse {
-  journey_id: string;
-  current_step: JourneyStep;
-  next_action: string;
-}
-
-export interface ApplicationResponse {
-  id: string;
-  status: ApplicationStatus;
-  action: ApplicationAction;
-  explanation: string;
-  missing_documents?: string[];
-}
 
 export interface Vehicle {
   registrationNumber: string;
@@ -52,7 +24,16 @@ export interface Vehicle {
   buyerName: string;
 }
 
-export interface JourneyState {
-  currentStep: JourneyStep;
-  completedSteps: JourneyStep[];
+export interface JourneyResponse {
+  journey_id: string;
+  current_step: JourneyStep;
+  next_action: string;
+}
+
+export interface StatusResponse {
+  id: string;
+  status: ApplicationStatus;
+  action: string;
+  explanation: string;
+  missing_documents: string[];
 }
