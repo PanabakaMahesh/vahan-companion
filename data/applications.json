@@ -1,0 +1,40 @@
+[
+  {
+    "id": "DEMO-VH-1001",
+    "type": "OWNERSHIP_TRANSFER",
+    "status": "UNDER_VERIFICATION",
+    "days_elapsed": 4,
+    "sla_days": 14,
+    "action": "WAIT",
+    "missing_documents": []
+  },
+  {
+    "id": "DEMO-VH-1002",
+    "type": "OWNERSHIP_TRANSFER",
+    "status": "DOCUMENT_REQUIRED",
+    "days_elapsed": 7,
+    "sla_days": 14,
+    "action": "UPLOAD_DOCUMENT",
+    "missing_documents": [
+      "Transfer Document"
+    ]
+  },
+  {
+    "id": "DEMO-VH-1003",
+    "type": "OWNERSHIP_TRANSFER",
+    "status": "DELAYED",
+    "days_elapsed": 22,
+    "sla_days": 14,
+    "action": "START_RESOLUTION",
+    "missing_documents": []
+  },
+  {
+    "id": "DEMO-VH-1004",
+    "type": "OWNERSHIP_TRANSFER",
+    "status": "COMPLETED",
+    "days_elapsed": 10,
+    "sla_days": 14,
+    "action": "NO_ACTION",
+    "missing_documents": []
+  }
+]

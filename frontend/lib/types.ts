@@ -6,6 +6,7 @@ export type JourneyStep =
   | "DOCUMENTS"
   | "PAYMENT"
   | "VERIFICATION"
+  | "UNDER_VERIFICATION"
   | "COMPLETED";
 
 export type ApplicationStatus =
@@ -28,6 +29,10 @@ export interface JourneyResponse {
   journey_id: string;
   current_step: JourneyStep;
   next_action: string;
+  progress: number;
+  steps: JourneyStep[];
+  role: string;
+  vehicle_type: VehicleType;
 }
 
 export interface StatusResponse {
