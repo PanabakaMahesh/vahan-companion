@@ -1,14 +1,30 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
 from app.api.applications import router as applications_router
 from app.api.intent import router as intent_router
 from app.api.journey import router as journey_router
 from app.api.documents import router as documents_router
 
+
 app = FastAPI(
     title="VAHAN Companion API",
     description="AI-powered assistant for vehicle ownership transfer and application status.",
-    version="1.0.0"
+    version="1.0.0",
 )
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 app.include_router(applications_router)
 app.include_router(intent_router)
